@@ -1,4 +1,6 @@
-# NewRepository
-it is just a src file zipped...
-you have to install react framework to run this.
+# Instagram Clone
+
+Tried to get some functionality like posting a media file and a caption when users are logged in.
+Other users can add comment on the post
+and much more ...
 
