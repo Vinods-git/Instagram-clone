@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+}
+
+.app {
+  background-color: #fafafa;
+}
+.post {
+  margin-left: 30%;
+  max-width: 600px;
+  padding-top: 10px;
+  background-color: white;
+  border: 1px solid lightgray;
+  margin-bottom: 45px;
+  border-radius: 4px;
+}
+
+.app_header {
+  background-color: white;
+  justify-content: space-between;
+  padding: 10px 10px;
+  padding-left: 30%;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  margin-bottom: 30px;
+  position: sticky;
+}
+.app_post {
+  padding: 20px;
+}
+
+.logo_image {
+  object-fit: contain;
+}
+.modal_logo_image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+.app_signup {
+  display: flex;
+  flex-direction: column;
+}
+.post_image {
+  width: 100%;
+  border: 1px solid lightgray;
+  border: 1px solid lightgray;
+  object-fit: contain;
+  max-height: 500px;
+}
+
+.post_text {
+  font-weight: normal;
+  padding: 20px;
+}
+
+.post_header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.post_avatar {
+  margin-right: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}

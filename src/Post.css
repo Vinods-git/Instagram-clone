@@ -1,0 +1,42 @@
+.post_commentBox {
+  display: flex;
+  margin-top: 10px;
+}
+
+.post_input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-top: 1px solid lightgray;
+}
+.post_button {
+  flex: 0;
+  border: none;
+  color: #6082a3;
+  background-color: transparent;
+  border-top: 1px solid lightgray;
+}
+
+.post_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post_comment {
+  padding: 20px;
+}
+.comment {
+  display: flex;
+  justify-content: space-between;
+}
+.comment-text {
+  width: 500px;
+  word-wrap: break-word;
+}
+.cross {
+  cursor: pointer;
+}
+
+.caption {
+  padding: 20px;
+}
