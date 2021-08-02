@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './instagram/instaclone';
+import App from './src/instaclone';
 
 import reportWebVitals from './reportWebVitals';
 
