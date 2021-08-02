@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const App1 = (props) => {
+const App = (props) => {
   const [posts, setPosts] = useState([]);
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -213,4 +213,4 @@ const App1 = (props) => {
   );
 };
 
-export default App1;
+export default App;
