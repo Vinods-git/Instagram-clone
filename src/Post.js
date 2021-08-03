@@ -3,7 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { db } from './firebase';
 import firebase from 'firebase';
 import './Post.css';
-import MenuIcon from '@material-ui/icons/Menu;
+import MenuIcon from '@material-ui/icons/Menu';
 
 const Post = ({ postId, user, avatar, username, imagePost, caption }) => {
   const [comments, setComments] = useState([]);
