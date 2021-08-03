@@ -103,7 +103,7 @@ const Post = ({ postId, user, avatar, username, imagePost, caption }) => {
               {user.displayName === comment.username ? (
                 <h5
                   className='cross'
-                  onClick={() => deleteCommentHandler(id, comment.username)}>
+                  onClick={() => deleteCommentHandler(id)}>
                   <DeleteIcon />
                 </h5>
               ) : (
