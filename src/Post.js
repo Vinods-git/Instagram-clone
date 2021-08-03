@@ -4,6 +4,7 @@ import { db } from './firebase';
 import firebase from 'firebase';
 import './Post.css';
 import MenuIcon from '@material-ui/icons/Menu';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const Post = ({ postId, user, avatar, username, imagePost, caption }) => {
   const [comments, setComments] = useState([]);
@@ -41,18 +42,31 @@ const Post = ({ postId, user, avatar, username, imagePost, caption }) => {
     setComment('');
   };
 
+  const deletePostHandler = (id) => {
+    if(user.displayName===username)
+     {db.collection('post')
+       .doc(postId)
+       .delete()
+       .then(() => {
+         console.log('Post successfully deleted!');
+       })
+       .catch((error) => {
+         console.error('Error removing post: ', error);
+       });}
+  }
   const deleteCommentHandler = (id) => {
-    db.collection('post')
-      .doc(postId)
-      .collection('comments')
-      .doc(id)
-      .delete()
-      .then(() => {
-        console.log('Document successfully deleted!');
-      })
-      .catch((error) => {
-        console.error('Error removing document: ', error);
-      });
+    
+      db.collection('post')
+        .doc(postId)
+        .collection('comments')
+        .doc(id)
+        .delete()
+        .then(() => {
+          console.log('Document successfully deleted!');
+        })
+        .catch((error) => {
+          console.error('Error removing document: ', error);
+        });
   };
   return (
     <div className='post'>
@@ -61,12 +75,16 @@ const Post = ({ postId, user, avatar, username, imagePost, caption }) => {
           className='avatar-name'
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
+            alignItems: 'center',
           }}>
           <Avatar className='post_avatar' src={avatar} />
-          <p> {username}</p>
+          <h3> {username}</h3>
         </div>
-        <MenuIcon onClick={() => {}} />
+        <MenuIcon
+          onClick={() => {
+            deletePostHandler(postId);
+          }}
+        />
       </div>
       <div className='image_and_caption'>
         <img className='post_image' src={imagePost} alt='imagePost' />
@@ -82,9 +100,15 @@ const Post = ({ postId, user, avatar, username, imagePost, caption }) => {
               <p className='comment-text' key={id}>
                 <strong>{comment.username}</strong> {comment.text}
               </p>
-              <h5 className='cross' onClick={() => deleteCommentHandler(id)}>
-                x
-              </h5>
+              {user.displayName === comment.username ? (
+                <h5
+                  className='cross'
+                  onClick={() => deleteCommentHandler(id, comment.username)}>
+                  <DeleteIcon />
+                </h5>
+              ) : (
+                <></>
+              )}
             </div>
           ))
         ) : (
