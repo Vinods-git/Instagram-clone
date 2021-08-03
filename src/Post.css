@@ -3,6 +3,10 @@
   margin-top: 10px;
 }
 
+*{
+  font-family:font-sans-serif
+}
+
 .post_input {
   flex: 1;
   border: none;
