@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { db, auth } from './firebase';
-import './App.css';
-import Post from './Post';
-import ImageUpload from './ImageUpload';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Input from '@material-ui/core/Input';
-
-
+import React, { useState, useEffect } from "react";
+import { db, auth } from "./firebase";
+import "./App.css";
+import Post from "./Post";
+import ImageUpload from "./ImageUpload";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Input from "@material-ui/core/Input";
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -16,19 +14,19 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    transform: `translate(-${top}%, -${left}%)`
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: 'absolute',
+    position: "absolute",
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
+    padding: theme.spacing(2, 4, 3)
+  }
 }));
 
 const App = (props) => {
@@ -38,16 +36,17 @@ const App = (props) => {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [openSignIn, setOpenSignIn] = React.useState(false);
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
+  const postname = "post";
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         setUser(authUser);
-       // console.log(authUser);
+        // console.log(authUser);
       } else {
         setUser(null);
       }
@@ -61,7 +60,7 @@ const App = (props) => {
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
         authUser.user.updateProfile({
-          displayName: username,
+          displayName: username
         });
       })
       .catch((err) => {
@@ -92,31 +91,34 @@ const App = (props) => {
     <div style={modalStyle} className={classes.paper}>
       <center>
         <img
-          className='logo_image'
-          src='https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png'
-          alt='Logo'
+          className="logo_image"
+          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+          alt="Logo"
         />
       </center>
-      <form className='form'>
+      <form className="form">
         <Input
-          id='username'
-          type='text'
-          placeholder='Username'
+          id="username"
+          type="text"
+          placeholder="Username"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}></Input>
+          onChange={(e) => setUsername(e.target.value)}
+        ></Input>
         <Input
-          id='email'
-          type='email'
-          placeholder='Email'
+          id="email"
+          type="email"
+          placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}></Input>
+          onChange={(e) => setEmail(e.target.value)}
+        ></Input>
         <Input
-          id='password'
-          type='password'
-          placeholder='Password'
+          id="password"
+          type="password"
+          placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}></Input>
-        <Button type='submit' onClick={sign_up}>
+          onChange={(e) => setPassword(e.target.value)}
+        ></Input>
+        <Button type="submit" onClick={sign_up}>
           Register
         </Button>
       </form>
@@ -126,25 +128,27 @@ const App = (props) => {
     <div style={modalStyle} className={classes.paper}>
       <center>
         <img
-          className='logo_image'
-          src='https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png'
-          alt='Logo'
+          className="logo_image"
+          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+          alt="Logo"
         />
       </center>
-      <form className='form'>
+      <form className="form">
         <Input
-          id='email'
-          type='email'
-          placeholder='Email'
+          id="email"
+          type="email"
+          placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}></Input>
+          onChange={(e) => setEmail(e.target.value)}
+        ></Input>
         <Input
-          id='password'
-          type='password'
-          placeholder='Password'
+          id="password"
+          type="password"
+          placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}></Input>
-        <Button type='submit' onClick={sign_in}>
+          onChange={(e) => setPassword(e.target.value)}
+        ></Input>
+        <Button type="submit" onClick={sign_in}>
           sign in
         </Button>
       </form>
@@ -152,20 +156,20 @@ const App = (props) => {
   );
 
   useEffect(() => {
-    db.collection('post')
-      .orderBy('timestamp', 'desc')
+    db.collection(postname)
+      .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
-            post: doc.data(),
+            post: doc.data()
           }))
         );
       });
   }, []);
 
   return (
-    <div className='app'>
+    <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
         {sign_up_body}
       </Modal>
@@ -173,11 +177,11 @@ const App = (props) => {
         {sign_in_body}
       </Modal>
 
-      <div className='app_header'>
+      <div className="app_header">
         <img
-          className='logo_image'
-          src='https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png'
-          alt='Logo'
+          className="logo_image"
+          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+          alt="Logo"
         />
         {user ? (
           <Button onClick={sign_out}>Sign out</Button>
@@ -198,13 +202,14 @@ const App = (props) => {
             username={post.username}
             imagePost={post.imagePost}
             caption={post.caption}
+            postname={postname}
           />
         ))}
       </div>
 
-      <div className='image_uploader'>
+      <div className="image_uploader">
         {user?.displayName ? (
-          <ImageUpload username={user.displayName} />
+          <ImageUpload username={user.displayName} postname={postname} />
         ) : (
           <h3>Sorry you need to login</h3>
         )}
