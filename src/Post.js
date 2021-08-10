@@ -35,7 +35,7 @@ const Post = ({
     return () => {
       unsubscribe();
     };
-  }, [postId]);
+  }, [postname, postId]);
 
   const postComment = (event) => {
     //adding comments
