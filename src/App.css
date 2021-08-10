@@ -5,8 +5,13 @@
 .app {
   background-color: #fafafa;
 }
+.post-list{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
 .post {
-  margin-left: 30%;
+  
   max-width: 600px;
   padding-top: 10px;
   background-color: white;

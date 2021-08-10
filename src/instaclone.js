@@ -193,7 +193,7 @@ const App = (props) => {
         )}
       </div>
 
-      <div>
+      <div className="post-list">
         {posts.map(({ post, id }) => (
           <Post
             key={id}
