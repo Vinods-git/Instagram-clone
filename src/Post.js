@@ -103,30 +103,25 @@ const Post = ({
       </div>
 
       <div className="post_comment">
-        {user ? (
-          comments.map(({ id, comment }) => (
-            <div key={id} className="comment">
-              <p className="comment-text" key={id}>
-                <strong>{comment.username}</strong> {comment.text}
-              </p>
-              {user.displayName === comment.username ? (
-                <h5 className="cross" onClick={() => deleteCommentHandler(id)}>
-                  <DeleteIcon />
-                </h5>
-              ) : (
-                <></>
-              )}
-            </div>
-          ))
-        ) : (
-          <p>
-            <strong>To post a comment you need to log in first</strong>
-          </p>
-        )}
+        {comments.map(({ id, comment }) => (
+          <div key={id} className="comment">
+            <p className="comment-text" key={id}>
+              <strong>{comment.username}</strong> {comment.text}
+            </p>
+            {user.displayName === comment.username ? (
+              <h5 className="cross" onClick={() => deleteCommentHandler(id)}>
+                <DeleteIcon />
+              </h5>
+            ) : (
+              <></>
+            )}
+          </div>
+        ))}
       </div>
-      <div disabled={!user}>
+      <div>
         <form className="post_commentBox">
           <input
+            disabled={!user}
             type="text"
             className="post_input"
             placeholder="add a comment"
