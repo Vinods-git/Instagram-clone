@@ -5,13 +5,13 @@
 .app {
   background-color: #fafafa;
 }
-.post-list{
-  display:flex;
+.post-list {
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 .post {
-  
+  width: 500px;
   max-width: 600px;
   padding-top: 10px;
   background-color: white;
