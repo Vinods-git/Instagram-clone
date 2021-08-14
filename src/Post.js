@@ -108,7 +108,7 @@ const Post = ({
             <p className="comment-text" key={id}>
               <strong>{comment.username}</strong> {comment.text}
             </p>
-            {user.displayName === comment.username ? (
+            {user?.displayName === comment.username ? (
               <h5 className="cross" onClick={() => deleteCommentHandler(id)}>
                 <DeleteIcon />
               </h5>
