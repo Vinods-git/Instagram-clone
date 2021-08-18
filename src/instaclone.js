@@ -201,7 +201,7 @@ const App = (props) => {
             user={user}
             username={post.username}
             imagePost={post.imagePost}
-            caption={post.caption}
+            caption={post.comment}
             postname={postname}
           />
         ))}

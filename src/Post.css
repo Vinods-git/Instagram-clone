@@ -1,6 +1,7 @@
 .post_commentBox {
   display: flex;
   margin-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .post_input {
@@ -21,10 +22,15 @@
 .post_header {
   display: flex;
   justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+.caption {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .post_comment {
   padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .comment {
   display: flex;
